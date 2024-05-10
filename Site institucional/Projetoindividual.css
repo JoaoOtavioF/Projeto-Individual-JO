@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Didone&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #fdfdfd;
+    color: rgb(54, 10, 10);  
+}
+
+.header{
+    width: 100%;
+    border-bottom: 3px solid #32b9cd;
+    height: 100px;
+}
+.container{
+    display: flex;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar{
+    display: flex;
+    list-style: none;
+}
+.navbar li {
+    display: flex;
+    margin-right: 45px;
+    align-items: center;
+}
+
+.banner{
+    height: 300px;
+    background-image: url("data:image/jpeg;base64,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");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1365px;
+    font-family: monospace;
+    color: #fff;
+}
+
+.banner .container {
+    justify-content: center;
+}
+.banner .container p{
+    font-size: 36px;
+    width: 300px;
+}
+
+.social{
+    height: 400px;
+    background-color: #e5e5e5;
+    padding: 40px 0;
+}
+
+.social .container .card{
+    width: 200px;
+    color: #222;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 350px;
+    justify-content: space-between;
+}
+
+.social .container .card img{
+    width: 150px;
+}
+
+.social .container .card h4{
+    font-size: 24px;
+}
+.botao{
+    background-color: #f78d1d;
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.botao:hover {
+    animation: none;
+}
+.carrosel {
+    margin: 0 auto;
+    padding-top: 0px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 25%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+}

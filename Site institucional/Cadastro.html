@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Igreja digital | </title>
+    <link rel="stylesheet" href="Cadastro.css">
+    </head>
+
+<body>
+    <div id="cadastro" class="cadastro">
+        <a href="Projeto individual Igreja digital.html"><img src="https://static.vecteezy.com/system/resources/previews/001/194/427/non_2x/cross-png.png" alt="logo" class="logo"></a>
+        <h1>Cadastro Doador e Donatário</h1>
+        <br><br>
+        <select name="funcao" id="#">
+            <option value="#" disabled selected>Escolha a sua função</option>
+            <option value="1">Doador</option>
+            <option value="2">Donatário</option>
+        </select>
+        <select name="tipo" id="0">
+            <option value="" disabled selected>Tipo de doação</option>
+            <option value="1">Pix</option>
+            <option value="2">Cesta Basica</option>
+            <option value="3">Roupas</option>
+            <!-- var funcao = funcao.value; -->
+        </select>
+        Nome <br> <input type="text" id="input_nome" placeholder="Nome"> 
+        Telefone <br> <input type="text" id="input_telefone" placeholder="Telefone"> 
+        E-mail<br> <input type="text" id="input_email" placeholder="E-mail"> 
+        Senha <br> <input type="text" id="input_senha" placeholder="Senha">
+        CEP <br> <input type="text" id="input_cep" placeholder="CEP"> 
+        Número <br> <input type="text" id="input_numero" placeholder="Número"> 
+        Complemento <br> <input type="text" id="input_complemento" placeholder="Complemento"> 
+        <button onclick="iniciar()">Cadastre-se</button>
+
+    </div>
+
+</body>
+</html>
+<script>
+    function iniciar() {
+        var nome = input_nome.value;
+        var telefone = input_telefone.value;
+        var email = input_email.value;
+        var cep = input_cep.value;
+        var num = input_numero.value;
+        var complemento = input_complemento.value;
+
+
+       
+        var email_pcom = email.endsWith(".com");
+        var email_arroba = email.indexOf('@');
+        var tamanho_telefone = telefone.length;
+        var tamanho_cep = cep.length
+
+        if(tamanho_telefone !== 11){
+            alert('Digite um número de telefone válido');
+        }
+
+
+       else if (email_pcom != true || email_arroba < 0) {
+            alert('Seu email deve conter o caracter "@" e terminar com ".com"');
+        }
+
+       else if (tamanho_cep !== 9){
+        alert('Digite um CEP válido');
+       }
+
+        else{
+            alert('Cadastro realizado com sucesso! Aguarde o contato');
+            input_nome.value= "";
+            input_telefone.value= "";
+            input_email.value= "";
+            input_cep.value= "";
+            input_numero.value= "";
+            input_complemento.value= "";
+        }
+
+    }
+
+</script>
