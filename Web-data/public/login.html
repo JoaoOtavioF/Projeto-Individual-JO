@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Igreja digital | </title>
+    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="shortcut icon" href="../public/assets/icon/logo projeto individual.webp" type="image/x-icon">
+    </head>
+
+<body>
+    <div id="login" class="login">
+        <a href="../public/index.html"><img src="https://static.vecteezy.com/system/resources/previews/001/194/427/non_2x/cross-png.png" alt="logo" class="logo"></a>
+        <h1>Login Igreja digital</h1>
+        <br><br>
+        
+        E-mail<br> <input type="text" id="email_input" placeholder="E-mail"> 
+        Senha <br> <input type="password" id="senha_input" placeholder="Senha">
+        <div class="entrar">
+            <p>Ainda não tem uma conta? <a href="Funçãodd.html">Cadastre-se</a></p>
+            <br>
+            <!-- <input type="submit" value="Entrar"> -->
+        </div>
+        <div class="button">
+        <a href="../public/dashboard/dashboard.html"><button onclick="iniciar()">Entrar</button></a>
+    </div>
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
