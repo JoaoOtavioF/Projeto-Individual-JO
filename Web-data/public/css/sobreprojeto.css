@@ -112,6 +112,10 @@ body{
 .botao:hover {
     animation: none;
 }
+.sobreprojeto {
+    text-decoration: none;
+    color: #222;
+}
 .quemsomos {
     height: 500px;
     background-color: #e5e5e5;
@@ -123,56 +127,20 @@ body{
     text-align: right;
 }
 .quemsomos img{
-    width: 550px;
-    height: 350px;
+    width: 450px;
+    height: 300px;
     margin-left: 15px;
     border-radius: 22px;
 }
-.batismo {
+.eu {
  margin-left: 30px;
 }
-.textobatismo {
+.textosobreprojeto {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
     margin-left: 100px;
     margin-right: 100px;
-}
-.oração {
-    /* margin-right: 30px; */
-    height: 500px;
-    background-color: #e5e5e5;
-    padding: 40px 0;
-    font-size: 35px;
-    margin-left: 55px;
-    display: flex;
-    align-items: center;
-    text-align: left;
-    flex-direction: row-reverse;
-}
-.textooracao {
-    display: flex;
-    /* align-items: center; */
-    text-align: left;
-    margin-left: 100px;
-    margin-right: 100px;
-    flex-direction: column;
-}
-.oração img{
-    width: 450px;
-    height: 350px;
-    margin-left: 15px;
-    border-radius: 22px;
-    display: flex;  
-    float: right;
-    margin-right: 100px;
-}
-.footer {
-    background-color: #f78d1d ;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .navbar a{
     text-decoration: none;

@@ -4,26 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Igreja digital | </title>
-    <link rel="stylesheet" href="../public/css/login.css">
-    <link rel="shortcut icon" href="../public/assets/icon/logo projeto individual.webp" type="image/x-icon">
+    <title>Login DigitalChurch </title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="assets/icon/logo projeto individual.webp" type="image/x-icon">
     </head>
 
 <body>
     <div id="login" class="login">
-        <a href="../public/index.html"><img src="https://static.vecteezy.com/system/resources/previews/001/194/427/non_2x/cross-png.png" alt="logo" class="logo"></a>
-        <h1>Login Igreja digital</h1>
+        <a href="index.html"><img src="https://static.vecteezy.com/system/resources/previews/001/194/427/non_2x/cross-png.png" alt="logo" class="logo"></a>
+        <h1>Login DigitalChurch</h1>
         <br><br>
         
         E-mail<br> <input type="text" id="email_input" placeholder="E-mail"> 
         Senha <br> <input type="password" id="senha_input" placeholder="Senha">
         <div class="entrar">
-            <p>Ainda não tem uma conta? <a href="Funçãodd.html">Cadastre-se</a></p>
+            <p>Ainda não tem uma conta? <a href="cadastrunico.html">Cadastre-se</a></p>
             <br>
             <!-- <input type="submit" value="Entrar"> -->
         </div>
         <div class="button">
-        <a href="../public/dashboard/dashboard.html"><button onclick="iniciar()">Entrar</button></a>
+        <button onclick="entrar()">Entrar</button>
     </div>
 
     </div>
@@ -35,7 +35,6 @@
 
 
     function entrar() {
-        aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -43,7 +42,6 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
             return false;
         }
         else {
@@ -71,13 +69,13 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
+                    sessionStorage.TIPO = json.fktipo;
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.ID_USUARIO = json.idusuario;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./dashboard/dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -88,7 +86,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
                 });
             }
 
