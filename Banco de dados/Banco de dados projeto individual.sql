@@ -1,17 +1,16 @@
-Create database DigitalChurch;
+create database DigitalChurch;
 use DigitalChurch;
 
 
 CREATE TABLE tipo (
     idtipo int primary key auto_increment,
-	tipo varchar(45),
-	descrição VARCHAR(50)
+	tipo varchar(45)
 );
 
 insert into tipo values 
-(default, 'Conselhos', null),
-(default, 'Versículos', null),
-(default, 'Frases', null);
+(default, 'Conselhos'),
+(default, 'Versículos'),
+(default, 'Frases');
 
 
 CREATE TABLE usuario (
@@ -53,15 +52,8 @@ else 0
 end) as qtdfrases 
 from usuario;
 
-select 'Conselho' as tipo, count(*) as qtd from usuario where fktipo= 1
+select 'Conselho' as tipo, count(*) as qtd from usuario where fktipo = 1
 union all
 select 'Versiculo' as tipo, count(*) as qtd from usuario where fktipo= 2
 union all
 select 'Frases' as tipo, count(*) as qtd from usuario where fktipo= 3;
-
-
-
-
-
-insert into usuario(fktipo,nome,email,telefone,cep,numero,complemento,senha) values 
-( 2, 'nome', 'email','11111111111','05574090','12345','complemento','senha');
