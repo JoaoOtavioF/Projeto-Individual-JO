@@ -131,6 +131,52 @@
 </html>
 
 <script>
+  function iniciar() {
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var tipoVar = select_tipo.value;
+    var telefoneVar = telefone_input.value;
+    var cepVar = cep_input.value
+    var numVar = numero_input.value
+    var compVar = complemento_input.value
+
+    var email_pcom = emailVar.endsWith(".com");
+    var email_arroba = emailVar.indexOf('@');
+    var tam_senha = senhaVar.length;
+
+
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ||
+      empresa == "#"
+    ) {
+      alert("Preencha todos os campos para prosseguir!");
+    }
+
+    else if (email_pcom == false || email_arroba < 0) {
+      alert('Seu email deve conter o caracter "@" e terminar com ".com"');
+    }
+
+    else if (tam_senha <= 6) {
+      alert('Coloque uma senha com 6 ou mais caracteres');
+    }
+
+    else if (confirmacaoSenhaVar != senhaVar) {
+      alert('A senha e a confirmação devem ser iguais');
+    }
+
+    else {
+
+      cadastrar();
+    }
+
+  }
+
+
   function cadastrar() {
     aguardar();
 
